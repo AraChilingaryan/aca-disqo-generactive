@@ -1,4 +1,4 @@
-package repository.model;
+package com.aca_disqo_generactive.repository.model;
 
 public class Stock extends Item{
 

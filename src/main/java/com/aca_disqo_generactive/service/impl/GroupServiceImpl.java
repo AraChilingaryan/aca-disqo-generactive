@@ -1,9 +1,9 @@
-package service.impl;
+package com.aca_disqo_generactive.service.impl;
 
-import controller.dto.GroupDTO;
-import repository.container.Database;
-import repository.model.Group;
-import service.GroupService;
+import com.aca_disqo_generactive.controller.dto.GroupDTO;
+import com.aca_disqo_generactive.repository.container.Database;
+import com.aca_disqo_generactive.repository.model.Group;
+import com.aca_disqo_generactive.service.GroupService;
 
 public class GroupServiceImpl implements GroupService {
 

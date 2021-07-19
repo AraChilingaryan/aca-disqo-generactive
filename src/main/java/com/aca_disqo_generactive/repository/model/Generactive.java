@@ -1,6 +1,6 @@
-package repository.model;
+package com.aca_disqo_generactive.repository.model;
 
-import utils.Currency;
+import com.aca_disqo_generactive.utils.Currency;
 
 public class Generactive extends Item {
 

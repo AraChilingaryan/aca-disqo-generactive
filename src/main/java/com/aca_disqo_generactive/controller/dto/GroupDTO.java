@@ -1,4 +1,4 @@
-package controller.dto;
+package com.aca_disqo_generactive.controller.dto;
 
 public class GroupDTO {
 

@@ -1,11 +1,10 @@
-import controller.dto.GroupDTO;
-import controller.dto.ItemDTO;
-import repository.model.Generactive;
-import repository.model.Group;
-import repository.model.Item;
-import service.GroupService;
-import service.ItemService;
-import utils.ApplicationContext;
+package com.aca_disqo_generactive;
+
+import com.aca_disqo_generactive.controller.dto.GroupDTO;
+import com.aca_disqo_generactive.controller.dto.ItemDTO;
+import com.aca_disqo_generactive.service.GroupService;
+import com.aca_disqo_generactive.service.ItemService;
+import com.aca_disqo_generactive.utils.ApplicationContext;
 
 public class MockDataHelper {
 

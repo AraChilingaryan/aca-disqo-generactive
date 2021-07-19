@@ -1,9 +1,9 @@
-package controller;
+package com.aca_disqo_generactive.controller;
 
-import controller.dto.GroupDTO;
-import repository.model.Group;
-import service.GroupService;
-import service.impl.GroupServiceImpl;
+import com.aca_disqo_generactive.controller.dto.GroupDTO;
+import com.aca_disqo_generactive.repository.model.Group;
+import com.aca_disqo_generactive.service.GroupService;
+import com.aca_disqo_generactive.service.impl.GroupServiceImpl;
 
 public class GroupController {
 

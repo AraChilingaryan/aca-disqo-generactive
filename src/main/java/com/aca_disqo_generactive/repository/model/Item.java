@@ -1,7 +1,7 @@
-package repository.model;
+package com.aca_disqo_generactive.repository.model;
 
-import utils.Currency;
-import utils.Resolution;
+import com.aca_disqo_generactive.utils.Currency;
+import com.aca_disqo_generactive.utils.Resolution;
 
 public abstract class Item {
 

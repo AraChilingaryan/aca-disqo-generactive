@@ -1,9 +1,7 @@
-package repository.model;
+package com.aca_disqo_generactive.repository.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 public class Group {
 

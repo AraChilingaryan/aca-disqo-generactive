@@ -1,7 +1,4 @@
-import repository.container.Database;
-import service.impl.GroupServiceImpl;
-
-import java.io.IOException;
+package com.aca_disqo_generactive;
 
 public class EntryPoint {
 

@@ -1,7 +1,9 @@
-import controller.GroupController;
-import controller.ItemController;
-import controller.dto.GroupDTO;
-import controller.dto.ItemDTO;
+package com.aca_disqo_generactive;
+
+import com.aca_disqo_generactive.controller.GroupController;
+import com.aca_disqo_generactive.controller.ItemController;
+import com.aca_disqo_generactive.controller.dto.GroupDTO;
+import com.aca_disqo_generactive.controller.dto.ItemDTO;
 
 import java.io.BufferedReader;
 import java.io.IOException;

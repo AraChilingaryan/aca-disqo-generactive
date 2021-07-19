@@ -1,9 +1,9 @@
-package utils;
+package com.aca_disqo_generactive.utils;
 
-import service.GroupService;
-import service.ItemService;
-import service.impl.GroupServiceImpl;
-import service.impl.ItemServiceImpl;
+import com.aca_disqo_generactive.service.GroupService;
+import com.aca_disqo_generactive.service.ItemService;
+import com.aca_disqo_generactive.service.impl.GroupServiceImpl;
+import com.aca_disqo_generactive.service.impl.ItemServiceImpl;
 
 public class ApplicationContext {
 

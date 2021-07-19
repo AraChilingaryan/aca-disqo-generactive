@@ -1,6 +1,6 @@
-package repository.container;
+package com.aca_disqo_generactive.repository.container;
 
-import repository.model.Group;
+import com.aca_disqo_generactive.repository.model.Group;
 
 import java.util.ArrayList;
 import java.util.List;

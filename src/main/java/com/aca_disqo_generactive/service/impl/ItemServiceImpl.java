@@ -1,14 +1,14 @@
-package service.impl;
+package com.aca_disqo_generactive.service.impl;
 
-import controller.dto.ItemDTO;
-import repository.model.Generactive;
-import repository.model.Group;
-import repository.model.Item;
-import repository.model.Stock;
-import service.GroupService;
-import service.ItemService;
-import utils.ApplicationContext;
-import utils.Currency;
+import com.aca_disqo_generactive.controller.dto.ItemDTO;
+import com.aca_disqo_generactive.repository.model.Generactive;
+import com.aca_disqo_generactive.repository.model.Group;
+import com.aca_disqo_generactive.repository.model.Item;
+import com.aca_disqo_generactive.repository.model.Stock;
+import com.aca_disqo_generactive.service.GroupService;
+import com.aca_disqo_generactive.service.ItemService;
+import com.aca_disqo_generactive.utils.ApplicationContext;
+import com.aca_disqo_generactive.utils.Currency;
 
 public class ItemServiceImpl implements ItemService {
 
