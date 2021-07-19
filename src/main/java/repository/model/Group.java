@@ -1,14 +1,17 @@
 package repository.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class Group {
 
     private int id;
     private String name;
-    private int parentGroup;
-    private List<Group> subGroups;
-    private List<Item> items;
+    private Group parentGroup;
+    private List<Group> subGroups = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     public Group() {
     }
@@ -18,7 +21,7 @@ public class Group {
         this.name = name;
     }
 
-    public Group(int id, String name, int parentGroup) {
+    public Group(int id, String name, Group parentGroup) {
         this.id = id;
         this.name = name;
         this.parentGroup = parentGroup;
@@ -47,11 +50,11 @@ public class Group {
         this.name = name;
     }
 
-    public int getParentGroup() {
+    public Group getParentGroup() {
         return parentGroup;
     }
 
-    public void setParentGroup(int parentGroup) {
+    public void setParentGroup(Group parentGroup) {
         this.parentGroup = parentGroup;
     }
 
@@ -73,10 +76,14 @@ public class Group {
 
     @Override
     public String toString() {
+        int parentId = 0;
+        if(parentGroup != null) {
+            parentId = parentGroup.getId();
+        }
         return "Group{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", parentGroup=" + parentGroup +
+                ", parentGroup=" + parentId +
                 ", subGroups=" + subGroups +
                 ", items=" + items +
                 '}';

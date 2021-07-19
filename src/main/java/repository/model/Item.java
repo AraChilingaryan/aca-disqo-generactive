@@ -1,20 +1,30 @@
 package repository.model;
 
-public class Item {
+import utils.Currency;
+import utils.Resolution;
 
-    private int id;
-    private int groupId;
-    private double price;
-    private String currency;
+public abstract class Item {
 
-    public Item(int id, int groupId, double price, String currency) {
+    protected int id;
+    protected Group group;
+    protected double price;
+    protected Currency currency;
+    protected double finalPrice;
+
+    public Item() {
+    }
+
+    public Item(int id, Group group, double price, Currency currency) {
         this.id = id;
-        this.groupId = groupId;
+        this.group = group;
         this.price = price;
         this.currency = currency;
     }
 
-    public Item() {
+    public abstract double calculatePrice(int price);
+
+    public Resolution chooseResolution(String choice){
+       return Resolution.valueOf(choice);
     }
 
     public int getId() {
@@ -25,12 +35,12 @@ public class Item {
         this.id = id;
     }
 
-    public int getGroupId() {
-        return groupId;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public double getPrice() {
@@ -41,21 +51,19 @@ public class Item {
         this.price = price;
     }
 
-    public String getCurrency() {
+    public Currency getCurrency() {
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(Currency currency) {
         this.currency = currency;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", groupId=" + groupId +
-                ", price=" + price +
-                ", currency='" + currency + '\'' +
-                '}';
+    public double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 }

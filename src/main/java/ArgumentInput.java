@@ -1,29 +1,21 @@
-import repository.model.Group;
-import repository.model.Item;
+import controller.GroupController;
+import controller.ItemController;
+import controller.dto.GroupDTO;
+import controller.dto.ItemDTO;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ArgumentInput {
 
+    private GroupController groupController;
+    private ItemController itemController;
     private static final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    private final List<Group> groupList;
-    private final List<Item> itemList;
 
     public ArgumentInput() {
-        groupList = new ArrayList<>();
-        itemList = new ArrayList<>();
-    }
-
-    public List<Group> getGroupList() {
-        return groupList;
-    }
-
-    public List<Item> getItemList() {
-        return itemList;
+        groupController = new GroupController();
+        itemController = new ItemController();
     }
 
     public void inputGroupsAndItems() {
@@ -54,7 +46,7 @@ public class ArgumentInput {
             System.out.print("Please input name of group : ");
             String name = bufferedReader.readLine();
 
-            createGroupFrom(id, parentId, name);
+            createGroupDTOFrom(id, parentId, name);
             System.out.println();
 
             System.out.println("Enter : input group details ");
@@ -72,36 +64,33 @@ public class ArgumentInput {
             int id = Integer.parseInt(bufferedReader.readLine());
 
             System.out.print("Please input item price : ");
-            double price = Double.parseDouble(bufferedReader.readLine());
+            int price = Integer.parseInt(bufferedReader.readLine());
 
             System.out.print("Please input item currency : ");
             String currency = bufferedReader.readLine();
 
             System.out.print("Please input groupId : ");
-            String name = bufferedReader.readLine();
+            int groupId = bufferedReader.read();
 
+            System.out.print("Please input type of group : ");
+            System.out.println("1 : Generactive " + "/n" + " 2 : Stock");
+            int itemType = bufferedReader.read();
 
             System.out.println("Enter : input item details ");
             System.out.println("Exit : exit");
+
+            itemController.create(createItemDTOFrom(id, groupId, price, currency, itemType));
 
             flag = bufferedReader.readLine();
         }
     }
 
-    private void createGroupFrom(int id, int parentId, String name) {
-        if (parentId != 0) {
-            final Group group = new Group(id, name);
-            groupList.add(group);
-        } else {
-            final Group group = new Group(id, name, parentId);
-            groupList.add(group);
-        }
+    private GroupDTO createGroupDTOFrom(int id, int parentId, String name) {
+        GroupDTO groupDTO = new GroupDTO(id, parentId, name);
+        return groupDTO;
     }
 
-    private void createItemFrom(int id, int groupId, double price, String currency) {
-        final Item item = new Item(id, groupId, price, currency);
-        this.itemList.add(item);
+    private ItemDTO createItemDTOFrom(int id, int groupId, int price, String currency, int itemType) {
+        return new ItemDTO(id, price, currency, groupId, itemType);
     }
-
-
 }
