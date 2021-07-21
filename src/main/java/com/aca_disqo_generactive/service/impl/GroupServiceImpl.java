@@ -19,7 +19,7 @@ public class GroupServiceImpl implements GroupService {
     public Group get(int id) {
         return Database.getGroupList().stream()
                 .filter(group -> group.getId() == id)
-                .findAny().orElseThrow(() -> new RuntimeException("No Group by that id"));
+                .findFirst().orElseThrow(() -> new RuntimeException("No Group by that id"));
     }
 
     private Group createGroupFrom(GroupDTO groupDTO) {
@@ -31,6 +31,7 @@ public class GroupServiceImpl implements GroupService {
             parentGroup.getSubGroups().add(group);
             group.setParentGroup(parentGroup);
         }
+        group.setResolution(groupDTO.getResolution());
         return group;
     }
 }

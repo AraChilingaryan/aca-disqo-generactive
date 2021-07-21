@@ -1,23 +1,24 @@
 package com.aca_disqo_generactive.controller;
 
 import com.aca_disqo_generactive.controller.dto.GroupDTO;
-import com.aca_disqo_generactive.repository.model.Group;
+import com.aca_disqo_generactive.converter.GroupConverter;
 import com.aca_disqo_generactive.service.GroupService;
-import com.aca_disqo_generactive.service.impl.GroupServiceImpl;
 
 public class GroupController {
 
     private final GroupService groupService;
+    private final GroupConverter groupConverter;
 
-    public GroupController() {
-        this.groupService = new GroupServiceImpl();
+    public GroupController(GroupService groupService, GroupConverter groupConverter) {
+        this.groupService = groupService;
+        this.groupConverter = groupConverter;
     }
 
-    public Group create(GroupDTO groupDTO){
-       return this.groupService.create(groupDTO);
+    public GroupDTO create(GroupDTO groupDTO) {
+        return groupConverter.convert(this.groupService.create(groupDTO));
     }
 
-    public Group get(int id){
-        return this.groupService.get(id);
+    public GroupDTO get(int id) {
+        return groupConverter.convert(this.groupService.get(id));
     }
 }

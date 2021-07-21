@@ -39,6 +39,7 @@ public class ItemServiceImpl implements ItemService {
         item.setCurrency(convertCurrency(itemDTO.getCurrency()));
         item.setGroup(groupService.get(itemDTO.getGroupId()));
         item.setPrice(itemDTO.getPrice());
+        item.setResolution(itemDTO.getResolution());
         item.setFinalPrice(item.calculatePrice(itemDTO.getPrice()));
         return item;
     }

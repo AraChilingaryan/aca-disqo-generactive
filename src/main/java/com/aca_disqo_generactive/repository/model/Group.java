@@ -1,5 +1,7 @@
 package com.aca_disqo_generactive.repository.model;
 
+import com.aca_disqo_generactive.utils.Resolution;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class Group {
     private Group parentGroup;
     private List<Group> subGroups = new ArrayList<>();
     private List<Item> items = new ArrayList<>();
+    private Resolution resolution;
 
     public Group() {
     }
@@ -72,18 +75,12 @@ public class Group {
         this.items = items;
     }
 
-    @Override
-    public String toString() {
-        int parentId = 0;
-        if(parentGroup != null) {
-            parentId = parentGroup.getId();
-        }
-        return "Group{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", parentGroup=" + parentId +
-                ", subGroups=" + subGroups +
-                ", items=" + items +
-                '}';
+    public Resolution getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(Resolution resolution) {
+        this.resolution = resolution;
     }
 }
+

@@ -4,6 +4,7 @@ import com.aca_disqo_generactive.controller.GroupController;
 import com.aca_disqo_generactive.controller.ItemController;
 import com.aca_disqo_generactive.controller.dto.GroupDTO;
 import com.aca_disqo_generactive.controller.dto.ItemDTO;
+import com.aca_disqo_generactive.utils.ApplicationContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,13 +12,19 @@ import java.io.InputStreamReader;
 
 public class ArgumentInput {
 
+    private final static ApplicationContext applicationContext = new ApplicationContext();
     private GroupController groupController;
     private ItemController itemController;
     private static final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
+
     public ArgumentInput() {
-        groupController = new GroupController();
-        itemController = new ItemController();
+        this(applicationContext.getGroupController(),applicationContext.getItemController());
+    }
+
+    private ArgumentInput(GroupController groupController, ItemController itemController) {
+        this.groupController = groupController;
+        this.itemController = itemController;
     }
 
     public void inputGroupsAndItems() {

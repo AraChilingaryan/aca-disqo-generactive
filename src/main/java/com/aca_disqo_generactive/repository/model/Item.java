@@ -10,6 +10,7 @@ public abstract class Item {
     protected double price;
     protected Currency currency;
     protected double finalPrice;
+    protected Resolution resolution;
 
     public Item() {
     }
@@ -59,11 +60,30 @@ public abstract class Item {
         this.currency = currency;
     }
 
-    public double getFinalPrice() {
+    public double getFinalPrice(){
         return finalPrice;
     }
 
     public void setFinalPrice(double finalPrice) {
         this.finalPrice = finalPrice;
+    }
+
+    public Resolution getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(Resolution resolution) {
+        this.resolution = resolution;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", group=" + group +
+                ", price=" + price +
+                ", currency=" + currency +
+                ", finalPrice=" + finalPrice +
+                '}';
     }
 }

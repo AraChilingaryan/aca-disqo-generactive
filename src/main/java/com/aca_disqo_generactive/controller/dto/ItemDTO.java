@@ -1,5 +1,7 @@
 package com.aca_disqo_generactive.controller.dto;
 
+import com.aca_disqo_generactive.utils.Resolution;
+
 public class ItemDTO {
 
     private int id;
@@ -7,6 +9,8 @@ public class ItemDTO {
     private String currency;
     private int groupId;
     private int itemType;
+    private double finalPrice;
+    private Resolution resolution;
 
     public ItemDTO() {
     }
@@ -57,5 +61,31 @@ public class ItemDTO {
 
     public void setItemType(int itemType) {
         this.itemType = itemType;
+    }
+
+    public double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(double finalPrice) {
+        this.finalPrice = finalPrice;
+    }
+
+    public Resolution getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(Resolution resolution) {
+        this.resolution = resolution;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemDTO{" +
+                "id=" + id +
+                ", currency='" + currency + '\'' +
+                ", groupId=" + groupId +
+                ", finalPrice=" + finalPrice +
+                '}';
     }
 }
