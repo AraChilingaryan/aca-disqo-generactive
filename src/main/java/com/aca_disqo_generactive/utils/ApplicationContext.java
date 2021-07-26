@@ -20,12 +20,22 @@ public class ApplicationContext {
     private GroupConverter groupConverter;
     private ItemConverter itemConverter;
 
+
+    private static ApplicationContext applicationContext = null;
+
+    public static ApplicationContext getInstance() {
+        if (applicationContext == null) {
+            applicationContext = new ApplicationContext();
+        }
+        return applicationContext;
+    }
+
     public GroupService getGroupService() {
-        return new GroupServiceImpl();
+        return GroupServiceImpl.getInstance();
     }
 
     public ItemService getItemService() {
-        return new ItemServiceImpl();
+        return ItemServiceImpl.getInstance();
     }
 
     public GroupController getGroupController() {
@@ -37,10 +47,10 @@ public class ApplicationContext {
     }
 
     public GroupConverter getGroupConverter() {
-        return new GroupConverterImpl(itemConverter);
+        return GroupConverterImpl.getInstance();
     }
 
     public ItemConverter getItemConverter() {
-        return new ItemConverterImpl();
+        return ItemConverterImpl.getInstance();
     }
 }

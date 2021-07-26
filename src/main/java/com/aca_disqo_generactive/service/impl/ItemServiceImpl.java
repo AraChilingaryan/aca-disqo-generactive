@@ -7,15 +7,23 @@ import com.aca_disqo_generactive.repository.model.Item;
 import com.aca_disqo_generactive.repository.model.Stock;
 import com.aca_disqo_generactive.service.GroupService;
 import com.aca_disqo_generactive.service.ItemService;
-import com.aca_disqo_generactive.utils.ApplicationContext;
 import com.aca_disqo_generactive.utils.Currency;
 
 public class ItemServiceImpl implements ItemService {
 
     private final GroupService groupService;
+    private static ItemService itemService;
 
-    public ItemServiceImpl() {
-        this.groupService = new ApplicationContext().getGroupService();
+    private ItemServiceImpl(GroupService groupService1) {
+        this.groupService = groupService1;
+    }
+
+
+    public static ItemService getInstance(){
+        if (itemService == null) {
+            itemService = new ItemServiceImpl(GroupServiceImpl.getInstance());
+        }
+        return itemService;
     }
 
     @Override

@@ -11,9 +11,17 @@ import java.util.stream.Collectors;
 public class GroupConverterImpl implements GroupConverter {
 
     private final ItemConverter itemConverter;
+    private static GroupConverter groupConverter;
 
     public GroupConverterImpl(ItemConverter itemConverter) {
         this.itemConverter = itemConverter;
+    }
+
+    public static GroupConverter getInstance() {
+        if (groupConverter == null) {
+            groupConverter = new GroupConverterImpl(ItemConverterImpl.getInstance());
+        }
+        return groupConverter;
     }
 
     @Override
@@ -21,10 +29,10 @@ public class GroupConverterImpl implements GroupConverter {
         final GroupDTO groupDTO = new GroupDTO();
         groupDTO.setId(group.getId());
         groupDTO.setName(group.getName());
-        if(group.getParentGroup() != null) {
+        if (group.getParentGroup() != null) {
             groupDTO.setParentId(group.getParentGroup().getId());
         }
-        if(group.getSubGroups() != null){
+        if (group.getSubGroups() != null) {
             groupDTO.setSubGroups(group.getSubGroups().stream().map(Group::getId).collect(Collectors.toList()));
         }
         if (group.getItems() != null) {

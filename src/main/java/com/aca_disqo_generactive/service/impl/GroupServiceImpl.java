@@ -7,7 +7,16 @@ import com.aca_disqo_generactive.service.GroupService;
 
 public class GroupServiceImpl implements GroupService {
 
-    public GroupServiceImpl() {
+    private static GroupService groupService = null;
+
+    private GroupServiceImpl() {
+    }
+
+    public static GroupService getInstance() {
+        if (groupService == null) {
+            groupService = new GroupServiceImpl();
+        }
+        return groupService;
     }
 
     @Override
