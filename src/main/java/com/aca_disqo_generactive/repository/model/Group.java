@@ -12,7 +12,6 @@ public class Group {
     private Group parentGroup;
     private List<Group> subGroups = new ArrayList<>();
     private List<Item> items = new ArrayList<>();
-    private Resolution resolution;
 
     public Group() {
     }
@@ -75,12 +74,27 @@ public class Group {
         this.items = items;
     }
 
-    public Resolution getResolution() {
-        return resolution;
+    public void print(int level) {
+        System.out.printf("GROUP - id: {%d} {%s}%n", id, name);
+        printSubGroups(++level);
+        printItems(level);
     }
 
-    public void setResolution(Resolution resolution) {
-        this.resolution = resolution;
+    private void printSubGroups(int level) {
+        String subLevelPrefix = "  ".repeat(level);
+        for (Group group : subGroups) {
+            System.out.print(subLevelPrefix);
+            group.print(level);
+        }
     }
+
+    private void printItems(int level) {
+        String subLevelPrefix = "  ".repeat(level);
+        for (Item item : items) {
+            System.out.print(subLevelPrefix);
+            item.print();
+        }
+    }
+
 }
 

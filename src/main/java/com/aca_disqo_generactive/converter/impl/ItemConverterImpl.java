@@ -25,7 +25,19 @@ public class ItemConverterImpl implements ItemConverter {
         itemDTO.setId(item.getId());
         itemDTO.setGroupId(item.getGroup().getId());
         itemDTO.setCurrency(item.getCurrency().name());
-        itemDTO.setFinalPrice(item.getFinalPrice());
+        return itemDTO;
+    }
+
+    @Override
+    public ItemDTO convertFromCSV(String[] csvLine) {
+        final ItemDTO itemDTO = new ItemDTO();
+        itemDTO.setId(Integer.parseInt(csvLine[0]));
+        itemDTO.setPrice(Integer.parseInt(csvLine[1]));
+        itemDTO.setName(csvLine[2]);
+        itemDTO.setImageUrl(csvLine[3]);
+        itemDTO.setGroupId(Integer.parseInt(csvLine[4]));
+        itemDTO.setCurrency("AMD");
+        itemDTO.setItemType(1);
         return itemDTO;
     }
 }

@@ -1,34 +1,52 @@
 package com.aca_disqo_generactive.service.impl;
 
 import com.aca_disqo_generactive.controller.dto.GroupDTO;
-import com.aca_disqo_generactive.repository.container.Database;
+import com.aca_disqo_generactive.repository.GroupRepository;
 import com.aca_disqo_generactive.repository.model.Group;
 import com.aca_disqo_generactive.service.GroupService;
+import com.aca_disqo_generactive.utils.ApplicationContext;
+
+import java.util.List;
 
 public class GroupServiceImpl implements GroupService {
 
     private static GroupService groupService = null;
+    private final GroupRepository groupRepository;
 
-    private GroupServiceImpl() {
+    private GroupServiceImpl(GroupRepository groupRepository) {
+        this.groupRepository = groupRepository;
     }
 
     public static GroupService getInstance() {
         if (groupService == null) {
-            groupService = new GroupServiceImpl();
+            groupService = new GroupServiceImpl(ApplicationContext.getInstance().getGroupRepository());
         }
         return groupService;
     }
 
     @Override
     public Group create(GroupDTO groupDTO) {
-        return Database.saveToDatabase(createGroupFrom(groupDTO));
+        return groupRepository.create(createGroupFrom(groupDTO));
     }
 
     @Override
     public Group get(int id) {
-        return Database.getGroupList().stream()
-                .filter(group -> group.getId() == id)
-                .findFirst().orElseThrow(() -> new RuntimeException("No Group by that id"));
+        return groupRepository.get(id);
+    }
+
+    @Override
+    public List<Group> getAll() {
+        return groupRepository.getAll();
+    }
+
+    @Override
+    public void deleteById(int id) {
+        groupRepository.deleteById(id);
+    }
+
+    @Override
+    public Group findGroupByName(String name) {
+        return groupRepository.findGroupByName(name);
     }
 
     private Group createGroupFrom(GroupDTO groupDTO) {
@@ -40,7 +58,6 @@ public class GroupServiceImpl implements GroupService {
             parentGroup.getSubGroups().add(group);
             group.setParentGroup(parentGroup);
         }
-        group.setResolution(groupDTO.getResolution());
         return group;
     }
 }

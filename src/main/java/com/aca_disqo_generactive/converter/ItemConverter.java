@@ -7,4 +7,6 @@ public interface ItemConverter {
 
     ItemDTO convert(Item item);
 
+    ItemDTO convertFromCSV(String[] csvLine);
+
 }

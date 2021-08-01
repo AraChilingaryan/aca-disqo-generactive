@@ -1,13 +1,12 @@
-package com.aca_disqo_generactive.service;
+package com.aca_disqo_generactive.repository;
 
-import com.aca_disqo_generactive.controller.dto.GroupDTO;
 import com.aca_disqo_generactive.repository.model.Group;
 
 import java.util.List;
 
-public interface GroupService {
+public interface GroupRepository {
 
-    Group create(GroupDTO groupDTO);
+    Group create(Group group);
 
     Group get(int id);
 

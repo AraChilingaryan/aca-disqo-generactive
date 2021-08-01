@@ -2,7 +2,10 @@ package com.aca_disqo_generactive.controller;
 
 import com.aca_disqo_generactive.controller.dto.GroupDTO;
 import com.aca_disqo_generactive.converter.GroupConverter;
+import com.aca_disqo_generactive.repository.model.Group;
 import com.aca_disqo_generactive.service.GroupService;
+
+import java.util.List;
 
 public class GroupController {
 
@@ -18,7 +21,19 @@ public class GroupController {
         return groupConverter.convert(this.groupService.create(groupDTO));
     }
 
-    public GroupDTO get(int id) {
-        return groupConverter.convert(this.groupService.get(id));
+    public Group get(int id) {
+        return this.groupService.get(id);
+    }
+
+    public List<Group> getAll() {
+        return groupService.getAll();
+    }
+
+    public void deleteById(int id) {
+        groupService.deleteById(id);
+    }
+
+    public Group findGroupByName(String name) {
+        return groupService.findGroupByName(name);
     }
 }

@@ -6,11 +6,13 @@ public class ItemDTO {
 
     private int id;
     private int price;
+    private String name;
     private String currency;
     private int groupId;
     private int itemType;
     private double finalPrice;
     private Resolution resolution;
+    private String imageUrl;
 
     public ItemDTO() {
     }
@@ -37,6 +39,14 @@ public class ItemDTO {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCurrency() {
@@ -77,6 +87,14 @@ public class ItemDTO {
 
     public void setResolution(Resolution resolution) {
         this.resolution = resolution;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

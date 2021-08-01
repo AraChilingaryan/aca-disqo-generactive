@@ -1,31 +1,25 @@
 package com.aca_disqo_generactive.repository.model;
 
+import com.aca_disqo_generactive.config.Configuration;
 import com.aca_disqo_generactive.utils.Currency;
 import com.aca_disqo_generactive.utils.Resolution;
 
 public abstract class Item {
 
-    protected int id;
-    protected Group group;
-    protected double price;
-    protected Currency currency;
-    protected double finalPrice;
-    protected Resolution resolution;
+    private int id;
+    private int basePrice;
+    private String name;
+    private String imageUrl;
+    private Group group;
+    private Currency currency;
 
     public Item() {
     }
 
-    public Item(int id, Group group, double price, Currency currency) {
+    public Item(int id, int basePrice, String name) {
         this.id = id;
-        this.group = group;
-        this.price = price;
-        this.currency = currency;
-    }
-
-    public abstract double calculatePrice(int price);
-
-    public Resolution chooseResolution(String choice){
-       return Resolution.valueOf(choice);
+        this.basePrice = basePrice;
+        this.name = name;
     }
 
     public int getId() {
@@ -36,20 +30,36 @@ public abstract class Item {
         this.id = id;
     }
 
+    public int getBasePrice() {
+        return basePrice;
+    }
+
+    public void setBasePrice(int basePrice) {
+        this.basePrice = basePrice;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public Group getGroup() {
         return group;
     }
 
     public void setGroup(Group group) {
         this.group = group;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public Currency getCurrency() {
@@ -60,30 +70,10 @@ public abstract class Item {
         this.currency = currency;
     }
 
-    public double getFinalPrice(){
-        return finalPrice;
-    }
+    public abstract double calculatePrice(Configuration configuration);
 
-    public void setFinalPrice(double finalPrice) {
-        this.finalPrice = finalPrice;
-    }
-
-    public Resolution getResolution() {
-        return resolution;
-    }
-
-    public void setResolution(Resolution resolution) {
-        this.resolution = resolution;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", group=" + group +
-                ", price=" + price +
-                ", currency=" + currency +
-                ", finalPrice=" + finalPrice +
-                '}';
+    public void print() {
+        System.out.printf("ITEM(%s) - id: {%d} {%s} {%d}%n",
+                this.getClass().getSimpleName(), id, name, basePrice);
     }
 }
