@@ -4,7 +4,7 @@ import com.aca_disqo_generactive.container.Database;
 import com.aca_disqo_generactive.repository.ItemRepository;
 import com.aca_disqo_generactive.repository.model.Group;
 import com.aca_disqo_generactive.repository.model.Item;
-import com.aca_disqo_generactive.utils.ApplicationContext;
+import com.aca_disqo_generactive.context.ApplicationContext;
 
 import java.util.Comparator;
 import java.util.List;

@@ -3,15 +3,13 @@ package com.aca_disqo_generactive;
 import com.aca_disqo_generactive.controller.GroupController;
 import com.aca_disqo_generactive.controller.ItemController;
 import com.aca_disqo_generactive.controller.dto.GroupDTO;
-import com.aca_disqo_generactive.controller.dto.ItemDTO;
 import com.aca_disqo_generactive.converter.ItemConverter;
-import com.aca_disqo_generactive.utils.ApplicationContext;
+import com.aca_disqo_generactive.context.ApplicationContext;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -1,10 +1,11 @@
 package com.aca_disqo_generactive;
 
+import com.aca_disqo_generactive.context.ApplicationContext;
 import com.aca_disqo_generactive.controller.GroupController;
 import com.aca_disqo_generactive.controller.ItemController;
 import com.aca_disqo_generactive.controller.dto.GroupDTO;
 import com.aca_disqo_generactive.controller.dto.ItemDTO;
-import com.aca_disqo_generactive.utils.ApplicationContext;
+import com.aca_disqo_generactive.exception.NoSuchFileException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +20,7 @@ public class ArgumentInput {
 
 
     public ArgumentInput() {
-        this(applicationContext.getGroupController(),applicationContext.getItemController());
+        this(applicationContext.getGroupController(), applicationContext.getItemController());
     }
 
     private ArgumentInput(GroupController groupController, ItemController itemController) {
@@ -31,19 +32,29 @@ public class ArgumentInput {
         try {
             inputGroup();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new NoSuchFileException(e);
         }
     }
 
     private void inputGroup() throws IOException {
         System.out.println("Enter : input group details ");
         System.out.println("Input items : continue");
-        String flag = bufferedReader.readLine();
+        String flag = null;
+        try {
+            flag = bufferedReader.readLine();
+        } catch (IOException e) {
+            throw new NoSuchFileException(e);
+        }
 
         while (!flag.equals("continue")) {
 
             System.out.print("Please input group id : ");
-            int id = Integer.parseInt(bufferedReader.readLine());
+            int id = 0;
+            try {
+                id = Integer.parseInt(bufferedReader.readLine());
+            } catch (IOException e) {
+                throw new NoSuchFileException(e);
+            }
 
             System.out.print("Please input group parentId : ");
             String inputParentId = bufferedReader.readLine();

@@ -1,6 +1,5 @@
 package com.aca_disqo_generactive.service.impl;
 
-import com.aca_disqo_generactive.controller.dto.GroupDTO;
 import com.aca_disqo_generactive.controller.dto.ItemDTO;
 import com.aca_disqo_generactive.repository.ItemRepository;
 import com.aca_disqo_generactive.repository.model.Generative;
@@ -9,7 +8,7 @@ import com.aca_disqo_generactive.repository.model.Item;
 import com.aca_disqo_generactive.repository.model.Stock;
 import com.aca_disqo_generactive.service.GroupService;
 import com.aca_disqo_generactive.service.ItemService;
-import com.aca_disqo_generactive.utils.ApplicationContext;
+import com.aca_disqo_generactive.context.ApplicationContext;
 import com.aca_disqo_generactive.utils.Currency;
 
 import java.util.List;

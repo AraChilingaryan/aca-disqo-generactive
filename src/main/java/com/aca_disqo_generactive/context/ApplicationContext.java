@@ -1,4 +1,4 @@
-package com.aca_disqo_generactive.utils;
+package com.aca_disqo_generactive.context;
 
 import com.aca_disqo_generactive.container.Database;
 import com.aca_disqo_generactive.controller.GroupController;
