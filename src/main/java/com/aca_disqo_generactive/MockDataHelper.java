@@ -32,8 +32,6 @@ public class MockDataHelper {
                 .map(itemConverter::convertFromCSV).collect(Collectors.toList())
                 .forEach(itemController::create);
         groupController.get(1).print(1);
-
-
     }
 
     static List<String[]> records = new ArrayList<>();
