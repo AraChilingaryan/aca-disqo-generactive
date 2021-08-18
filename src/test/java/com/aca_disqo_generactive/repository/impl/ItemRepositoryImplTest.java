@@ -8,7 +8,6 @@ import com.aca_disqo_generactive.repository.model.Group;
 import com.aca_disqo_generactive.repository.model.Item;
 import com.aca_disqo_generactive.utils.Currency;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 
@@ -54,6 +53,7 @@ public class ItemRepositoryImplTest {
         group.setName("Marta");
         groupRepository.create(group);
         final Item item = new Generative();
+        item.setId(1);
         item.setBasePrice(100);
         item.setCurrency(Currency.AMD);
         item.setName("Items");
@@ -61,15 +61,62 @@ public class ItemRepositoryImplTest {
         itemRepository.create(item);
         final Item item1 = new Generative();
         item1.setId(2);
-        item.setName("It");
+        item1.setName("It");
         item1.setGroup(group);
         item1.setCurrency(Currency.AMD);
         item1.setBasePrice(100);
-        item1.setGroup(group);
         itemRepository.create(item1);
-        itemRepository.deleteById(1);
-        Assert.assertNotEquals(1, itemRepository.findItemByGroup(group).size());
+        itemRepository.deleteById(2);
+        Assert.assertEquals(item, itemRepository.findItemByGroup(group).get(0));
     }
 
+    @Test
+    public void findItemByGroupTest(){
+        final Group group = new Group();
+        group.setId(1);
+        group.setName("Marta");
+        groupRepository.create(group);
+        final Item item = new Generative();
+        item.setId(1);
+        item.setBasePrice(100);
+        item.setCurrency(Currency.AMD);
+        item.setName("Items");
+        item.setGroup(group);
+        itemRepository.create(item);
+        final Item item1 = new Generative();
+        item1.setId(2);
+        item1.setName("It");
+        item1.setGroup(group);
+        item1.setCurrency(Currency.AMD);
+        item1.setBasePrice(100);
+        itemRepository.create(item1);
+
+        Assert.assertEquals(item, itemRepository.findItemByGroup(group).get(0));
+        Assert.assertEquals(item1, itemRepository.findItemByGroup(group).get(1));
+    }
+
+    @Test
+    public void findHighestPricedItemTest(){
+        final Group group = new Group();
+        group.setId(1);
+        group.setName("Marta");
+        groupRepository.create(group);
+        final Item item = new Generative();
+        item.setId(1);
+        item.setBasePrice(100);
+        item.setCurrency(Currency.AMD);
+        item.setName("Items");
+        item.setGroup(group);
+        itemRepository.create(item);
+        final Item item1 = new Generative();
+        item1.setId(2);
+        item1.setName("It");
+        item1.setGroup(group);
+        item1.setCurrency(Currency.AMD);
+        item1.setBasePrice(111);
+        itemRepository.create(item1);
+        Assert.assertEquals(item1, itemRepository.findHighestPricedItem());
+
+    }
 
 }

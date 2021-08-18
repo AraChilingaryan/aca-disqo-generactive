@@ -35,8 +35,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public void deleteById(int id) {
         final Item item = database.getItems().stream()
-                .filter(item1 -> item1.getId() == id)
-                .findAny().get();
+                .filter(item1 -> item1.getId() == id).findFirst().get();
         database.getItems().remove(item);
     }
 

@@ -18,6 +18,7 @@ public class MockDataHelper {
     private final static GroupController groupController = applicationContext.getGroupController();
     private final static ItemController itemController = applicationContext.getItemController();
     private final static ItemConverter itemConverter = applicationContext.getItemConverter();
+    private static final String PATH_TO_CSV = "src/main/resources/item.csv";
 
     public static void run() {
         GroupDTO group1 = new GroupDTO(1, 0, "Root");
@@ -28,10 +29,11 @@ public class MockDataHelper {
         groupController.create(group1);
         groupController.create(group2);
         groupController.create(group3);
-        readFromCsv("src/main/resources/item.csv").stream()
+        readFromCsv(PATH_TO_CSV).stream()
                 .map(itemConverter::convertFromCSV).collect(Collectors.toList())
                 .forEach(itemController::create);
-        groupController.get(1).print(1);
+        itemController.delete(1);
+        System.out.println(itemController.getItemsByGroup(1).toString());
     }
 
     static List<String[]> records = new ArrayList<>();

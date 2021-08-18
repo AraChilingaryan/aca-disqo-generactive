@@ -20,7 +20,7 @@ public class ItemConverterImpl implements ItemConverter {
     }
 
     @Override
-    public ItemDTO convert(Item item) {
+    public ItemDTO convert(final Item item) {
         final ItemDTO itemDTO = new ItemDTO();
         itemDTO.setId(item.getId());
         itemDTO.setGroupId(item.getGroup().getId());
@@ -29,7 +29,7 @@ public class ItemConverterImpl implements ItemConverter {
     }
 
     @Override
-    public ItemDTO convertFromCSV(String[] csvLine) {
+    public ItemDTO convertFromCSV(final String[] csvLine) {
         final ItemDTO itemDTO = new ItemDTO();
         itemDTO.setId(Integer.parseInt(csvLine[0]));
         itemDTO.setPrice(Integer.parseInt(csvLine[1]));
